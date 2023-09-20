@@ -1,0 +1,65 @@
+databaseChangeLog:
+  - changeSet:
+      id: VD-1
+      author: Denisenko
+      changes:
+        - createTable:
+            tableName: category
+            remarks: Категории блюд
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: category_pk
+                    nullable: false
+              - column:
+                  name: name
+                  remarks: Наименование категории
+                  type: varchar(50)
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: category_name_uq
+                    nullable: false
+        - createTable:
+            tableName: meal
+            remarks: Блюда и их описания
+            columns:
+              - column:
+                  name: id
+                  type: integer
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: meal_pk
+                    nullable: false
+              - column:
+                  name: name
+                  remarks: Наименование блюда
+                  type: varchar(100)
+                  constraints:
+                    unique: true
+                    uniqueConstraintName: meal_name_uq
+                    nullable: false
+              - column:
+                  name: description
+                  remarks: Описание блюда
+                  type: text
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  remarks: Стоимость блюда
+                  type: integer
+                  constraints:
+#сделать проверку на добавление стоимости меньше нуля
+                    nullable: false
+              - column:
+                  name: category_id
+                  remarks: id категории, к которой относится блюдо
+                  type: integer
+                  constraints:
+#добавить внешний ключ на таблицу с категориями
+                    nullable: false

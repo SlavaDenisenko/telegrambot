@@ -1,0 +1,30 @@
+# ===============================
+# TELEGRAM
+# ===============================
+bot:
+  name: MenuMozzarellaBot
+  token: 6141098221:AAFEDmCeYBhGqzIB9agwZ5wZHqLSZKfkk8k
+
+spring:
+  # ===============================
+  # DATABASE
+  # ===============================
+  datasource:
+    url: jdbc:postgresql://localhost:5432/telegram_bot_menu
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+
+  # ===============================
+  # JPA
+  # ===============================
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: postgresql
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        enable_lazy_load_no_trans: false
+    open-in-view: false
